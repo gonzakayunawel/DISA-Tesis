@@ -1,0 +1,117 @@
+---
+title: "Asymmetric Chilean Urban Logistics under External Shocks"
+subtitle: "A Quantitative Approach for Evidence-Based Public Policy"
+author:
+  - name: "Gonzalo Cayunao Erices"
+    affiliations:
+      - name: "PhD in Advanced Systems Engineering (DISA), Universidad Andrés Bello"
+        department: "Faculty of Engineering, UNAB"
+date: today
+date-format: "MMMM YYYY"
+lang: en
+abstract: |
+  Exploratory doctoral thesis proposal framed within the research lines of Logistics and Transport, and Information Systems and Data Intelligence.
+format:
+  pdf:
+    documentclass: scrartcl
+    papersize: letter
+    geometry:
+      - top=2.2cm
+      - bottom=2.2cm
+      - left=2.4cm
+      - right=2.4cm
+    fontsize: 11pt
+    linestretch: 1.15
+    colorlinks: true
+    linkcolor: "RoyalBlue"
+    urlcolor: "RoyalBlue"
+    citecolor: "RoyalBlue"
+    number-sections: true
+    toc: false
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{tcolorbox}
+        \tcbuselibrary{skins, breakable}
+        \definecolor{accent}{HTML}{1F4E79}
+        \definecolor{boxfill}{HTML}{EAF1F8}
+        \definecolor{softgrey}{HTML}{595959}
+        \usepackage{sectsty}
+        \sectionfont{\color{accent}}
+        \subsectionfont{\color{accent}}
+        \usepackage{microtype}
+        \frenchspacing
+    pdf-engine: xelatex
+    mainfont: "Latin Modern Roman"
+    sansfont: "Latin Modern Sans"
+    mathfont: "Latin Modern Math"
+bibliography: references.bib
+---
+
+# The Problem
+
+The Chilean e-commerce logistics market exhibits a particularly marked structural asymmetry: a handful of integrated operators (Blue Express, Chilexpress, Starken, Correos Chile) concentrate the majority of consolidated volume, while an atomized fabric of SME last-mile operators absorbs final delivery under contractual conditions inherited from the upper tier. This structure is not merely descriptive: it quantitatively conditions how the system responds to exogenous shocks—variations in diesel prices, exchange rates, low-emission regulations, labor laws for couriers—in ways that classic supply chain optimization models fail to capture.
+
+The research question is direct: ***how are regulatory and price shocks transmitted from the oligopolistic level to the last-mile, and what implications does this transmission have for the design of urban logistics public policy?*** Answering this quantitatively requires a model where the environment faced by small operators (subcontracting rates, available geographic coverage) is not an exogenous datum, but an endogenous variable that reacts to the strategic decisions of the upper tier and exogenous shocks.
+
+# Gap in the Literature
+
+Classic Vehicle Routing Problem (VRP) and Inventory Routing Problem (IRP) models optimize the response of an agent—or a centralized decision-maker—to a given environment. This formulation is powerful but implicitly assumes power symmetry and environment exogeneity, two assumptions that do not hold in the Chilean case.
+
+A preliminary bibliometric audit in Scopus (PRISMA, ongoing) suggests a specific gap: the intersection between **(i) modeling the strategic behavior of the logistics oligopoly**, **(ii) mean-field interaction among atomized last-mile operators**, and **(iii) counterfactual evaluation of public policy scenarios in reasonable time**, applied to the context of asymmetric logistics markets in emerging economies, has not been systematically covered. It is precisely at this intersection where the current proposal seeks to position itself.
+
+# Methodological Proposal
+
+The system is proposed to be modeled as a three-level hierarchical structure, with exogenous shocks entering parametrically at each level:
+
+- **Oligopolistic Level:** A stochastic dynamic game over zonal rates, network capacity, and service level commitments, with two equilibrium regimes (tacit collusion / competitive Nash) whose transition depends on exogenous shocks. This is a defensible reduced form in the tradition of @porterStudyCartelStability1983 and @ellisonTheoriesCartelStability1994.
+- **Stackelberg Coupling:** Principal operators act as leaders, anticipating the aggregate response of the continuum of last-milers, following the tradition of stochastic Stackelberg-Nash-Cournot equilibria [@StochasticVersionStackelbergNashCournot].
+- **Atomized Level:** SME last-milers solve an optimal control problem for routing and order acceptance under mean-field interaction, where the distribution $m(x,t)$ represents the spatial density of delivery capacity.
+
+Formally, the three levels are coupled in the following system (presented in compact form as a roadmap, not a definitive technical commitment):
+
+\begin{tcolorbox}[
+  enhanced, breakable,
+  colback=boxfill, colframe=accent,
+  boxrule=0.6pt, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+]
+\textbf{\color{accent}Oligopolistic level with regime switching:}
+\begin{equation*}
+V_i^{(s)}(\xi) \;=\; \max_{a_i}\!\left\{ \pi_i^{(s)}(a_i, a_{-i}^{*}, \xi) \;+\; \delta \sum_{s'} p_{ss'}(\xi)\, \mathbb{E}\!\left[V_i^{(s')}(\xi')\right] \right\}
+\end{equation*}
+
+\textbf{\color{accent}Last-mile level (Coupled HJB--Fokker-Planck, parametric in $\xi$):}
+\begin{align*}
+-\partial_t u + H\!\left(x, \nabla u, m, a_{\text{leader}}, \xi\right) &= 0 \\[2pt]
+\partial_t m - \mathrm{div}\!\left(m\, \nabla_p H\right) - \tfrac{\sigma^2}{2}\,\Delta m &= 0
+\end{align*}
+
+\noindent
+{\small\itshape\color{softgrey}
+where $s \in \{\text{collusive}, \text{competitive}\}$, $p_{ss'}(\xi)$ is the Markov transition matrix dependent on exogenous shocks $\xi$ (fuel, exchange rate, regulatory intensity), and $m(x,t)$ is the spatial density of available delivery capacity.}
+\end{tcolorbox}
+
+Numerical approximation of the coupled system is planned via Scientific Machine Learning techniques such as Physics-Informed Neural Operators or PINO [@karniadakisPhysicsinformedMachineLearning2021], which allow evaluating parametric families of solutions—i.e., counterfactual policy scenarios—in times compatible with their use by decision-makers. This computational component can be explored in collaboration with the DISA faculty in the Information Systems and Data Intelligence research line.
+
+# Testable Empirical Predictions
+
+The framework generates three testable predictions with potentially available Chilean data:
+
+- **Tariff asymmetry of the "rockets and feathers" type** regarding diesel price shocks: rapid upward adjustment, slow downward adjustment, conditional on the estimated regime.
+- **Increasing probability of a collusive regime** with exchange rate volatility and decreasing with observable regulatory intensity (proxies via DT, SERNAC, low-emission regulations).
+- **Predictable underserved coverage zones** resulting from mean-field equilibrium, even in the presence of economically viable demand—a phenomenon consistent with qualitative observations of logistics exclusion in peripheral communes.
+
+# Relationship of the Research Proposal with CTL / CATLEC
+
+Based on consultations, the CATLEC research line explicitly focuses on national logistics competitiveness with an emphasis on evidence-based public policies. This proposal aligns with that agenda in three concrete dimensions: (i) the object of study is directly the Chilean urban logistics system and its response to regulation; (ii) the main output is a counterfactual scenario simulation tool usable by regulators—not just a theoretical model—; (iii) testable predictions allow for empirical testing of hypotheses regarding market behavior currently discussed only qualitatively.
+
+The doctoral researcher contributes specific capabilities in GPU acceleration (PyTorch/CUDA), mathematical modeling, and hybrid metaheuristics (publication in preparation based on the master's thesis), which complement the applied expertise of CTL in logistical operations research.
+
+# Final Synthesis
+
+The proposal studies how regulatory and price shocks are transmitted through a structurally asymmetric logistics market: an oligopoly of integrated operators at the top and an atomized fabric of last-mile SMEs at the base. The central contribution is not just descriptive but quantitative: modeling this hierarchical system—stochastic dynamic game at the oligopolistic level, Stackelberg coupling, mean-field interaction at the atomized level—such that the conditions faced by small operators emerge as an endogenous variable and not as an exogenous datum.
+
+The expected result is not only an academic article but a counterfactual scenario simulation tool calibrated with Chilean data, usable by regulators to anticipate the distributive effects of logistics public policy before implementation.
+
+# References {.unnumbered}
