@@ -2,7 +2,7 @@
 title: "Asymmetric Chilean Urban Logistics under External Shocks"
 subtitle: "A Quantitative Approach for Evidence-Based Public Policy"
 author:
-  - name: "Gonzalo Cayunao Erices"
+  - name: "Gonzalo Cayunao Eruces"
     affiliations:
       - name: "PhD in Advanced Systems Engineering (DISA), Universidad Andrés Bello"
         department: "Faculty of Engineering, UNAB"
@@ -65,7 +65,7 @@ A preliminary bibliometric audit in Scopus (PRISMA, ongoing) suggests a specific
 The system is proposed to be modeled as a three-level hierarchical structure, with exogenous shocks entering parametrically at each level:
 
 - **Oligopolistic Level:** A stochastic dynamic game over zonal rates, network capacity, and service level commitments, with two equilibrium regimes (tacit collusion / competitive Nash) whose transition depends on exogenous shocks. This is a defensible reduced form in the tradition of @porterStudyCartelStability1983 and @ellisonTheoriesCartelStability1994.
-- **Stackelberg Coupling:** Principal operators act as leaders, anticipating the aggregate response of the continuum of last-milers, following the tradition of stochastic Stackelberg-Nash-Cournot equilibria [@StochasticVersionStackelbergNashCournot].
+- **Stackelberg Coupling:** Principal operators act as leaders, anticipating the aggregate response of the continuum of last-milers, following the tradition of stochastic Stackelberg-Nash-Cournot equilibria [@dewolfStochasticVersionStackelbergNashCournot1997].
 - **Atomized Level:** SME last-milers solve an optimal control problem for routing and order acceptance under mean-field interaction, where the distribution $m(x,t)$ represents the spatial density of delivery capacity.
 
 Formally, the three levels are coupled in the following system (presented in compact form as a roadmap, not a definitive technical commitment):
@@ -104,9 +104,9 @@ The framework generates three testable predictions with potentially available Ch
 
 # Relationship of the Research Proposal with CTL / CATLEC
 
-Based on consultations, the CATLEC research line explicitly focuses on national logistics competitiveness with an emphasis on evidence-based public policies. This proposal aligns with that agenda in three concrete dimensions: (i) the object of study is directly the Chilean urban logistics system and its response to regulation; (ii) the main output is a counterfactual scenario simulation tool usable by regulators—not just a theoretical model—; (iii) testable predictions allow for empirical testing of hypotheses regarding market behavior currently discussed only qualitatively.
+The CATLEC center explicitly specifies in one of its research lines an orientation toward national logistics competitiveness [@CATLEC2026] with a focus on evidence-based public policies. This proposal aligns with that agenda in three concrete dimensions: (i) the object of study is directly the Chilean urban logistics system and its response to regulation; (ii) the main output is a counterfactual scenario simulation tool usable by regulators—not just a theoretical model—; (iii) testable predictions allow for empirical testing of hypotheses regarding market behavior currently discussed only qualitatively.
 
-The doctoral researcher contributes specific capabilities in GPU acceleration (PyTorch/CUDA), mathematical modeling, and hybrid metaheuristics (publication in preparation based on the master's thesis), which complement the applied expertise of CTL in logistical operations research.
+The doctoral researcher contributes specific capabilities in GPU acceleration (PyTorch/CUDA), mathematical modeling, and hybrid metaheuristics (the subject of their master's thesis), which complement the applied expertise of CTL in logistical operations research.
 
 # Final Synthesis
 

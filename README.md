@@ -69,6 +69,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Author
 
-**Gonzalo Cayunao Erices**  
+**Gonzalo Cayunao Eruces**  
 PhD Researcher at DISA, Universidad Andrés Bello.  
 Facultad de Ingeniería, UNAB.
