@@ -1,18 +1,16 @@
 ---
-title: "Logística urbana asimétrica chilena bajo shocks regulatorios"
+title: "Logística urbana asimétrica chilena bajo shocks externos"
 subtitle: "Un enfoque cuantitativo para política pública basada en evidencia"
 author:
-  - name: "Gonza [Apellido]"
+  - name: "Gonzalo Cayunao Eruces"
     affiliations:
       - name: "Doctorado en Ingeniería de Sistemas Avanzados (DISA), Universidad Andrés Bello"
-        department: "Mentor inicial: Dr. Hernán Astudillo"
+        department: "Facultad de Ingeniería, UNAB"
 date: today
 date-format: "MMMM YYYY"
 lang: es
 abstract: |
-  Propuesta exploratoria de tesis doctoral. Documento preparado para reunión
-  con el Dr. Andrés Bronfman, Director Académico del Centro de Transporte y
-  Logística (CTL-UNAB).
+  Propuesta exploratoria de tesis doctoral enmarcada en las líneas de Logística y Transporte y Sistemas de Información e Inteligencia de los Datos.
 format:
   pdf:
     documentclass: scrartcl
@@ -47,6 +45,7 @@ format:
     mainfont: "Latin Modern Roman"
     sansfont: "Latin Modern Sans"
     mathfont: "Latin Modern Math"
+bibliography: references.bib
 ---
 
 # El problema
@@ -99,9 +98,10 @@ niveles, con shocks exógenos entrando paramétricamente en cada nivel:
   zonales, capacidad de red y compromiso de niveles de servicio, con dos
   regímenes de equilibrio (colusión tácita / Nash competitivo) cuya
   transición depende de los shocks exógenos. Forma reducida defendible
-  en la tradición de Porter (1983) y Ellison (1994).
+  en la tradición de @porterStudyCartelStability1983 y @ellisonTheoriesCartelStability1994.
 - **Acoplamiento Stackelberg:** los operadores principales actúan como
-  líderes anticipando la respuesta agregada del continuo de last-milers.
+  líderes anticipando la respuesta agregada del continuo de last-milers,
+  en la tradición de equilibrios Stackelberg-Nash-Cournot estocásticos [@StochasticVersionStackelbergNashCournot].
 - **Nivel atomizado:** los last-milers MiPyMEs resuelven un problema
   de control óptimo de ruteo y aceptación de pedidos en interacción de
   campo medio, donde la distribución $m(x,t)$ representa la densidad
@@ -137,12 +137,12 @@ densidad espacial de capacidad de delivery disponible.}
 \end{tcolorbox}
 
 La aproximación numérica del sistema acoplado está prevista vía técnicas
-de scientific machine learning (operadores neuronales informados por
-física), las cuales permiten evaluar familias paramétricas de soluciones
+de scientific machine learning como los operadores neuronales informados por
+física o PINO [@karniadakisPhysicsinformedMachineLearning2021], las cuales permiten evaluar familias paramétricas de soluciones
 —es decir, escenarios contrafactuales de política— en tiempos
 compatibles con su uso por tomadores de decisión. Esa pieza
 computacional puede explorarse en colaboración con el claustro DISA en
-la línea de HPC.
+la línea de Sistemas de Información e Inteligencia de los Datos.
 
 # Predicciones empíricas falsables
 
@@ -160,15 +160,15 @@ potencialmente disponibles:
   —fenómeno consistente con observaciones cualitativas de exclusión
   logística en comunas periféricas.
 
-# Por qué esta investigación encaja con CTL / CATLEC
+# Relación de la propuesta de investigación con el CTL / CATLEC
 
-La línea CATLEC explicita su orientación a competitividad logística
+De acuerdo con lo consultado, la línea CATLEC explicita su orientación a competitividad logística
 nacional con foco en políticas públicas basadas en evidencia. Esta
 propuesta calza con esa agenda en tres dimensiones concretas: (i) el
 objeto de estudio es directamente el sistema logístico urbano chileno y
 su respuesta a regulación; (ii) el output principal es una herramienta
 de simulación de escenarios contrafactuales utilizable por reguladores
-—no solo un paper—; (iii) las predicciones falsables permiten contrastar
+—no solo un modelo teórico—; (iii) las predicciones falsables permiten contrastar
 empíricamente hipótesis sobre comportamiento de mercado que hoy se
 discuten cualitativamente.
 
@@ -178,23 +178,11 @@ El doctorando aporta capacidades específicas en aceleración GPU
 complementan la experticia aplicada del CTL en operations research
 logístico.
 
-## Lo que se solicita en esta etapa {.unnumbered}
 
-**Una reunión exploratoria de aproximadamente 30 minutos**, sin
-compromiso de dirección a esta altura. El objetivo es presentar la
-motivación del problema, escuchar su lectura sobre la pertinencia y el
-encuadre, y evaluar conjuntamente si vale la pena seguir conversando.
-Este documento es una versión inicial; espero que su feedback —en
-particular sobre el realismo del problema y la disponibilidad de datos
-chilenos relevantes— ayude a calibrar la dirección que tome la propuesta
-en los próximos meses.
+# Síntesis Final
 
-\vspace{0.5em}
-\noindent\rule{\textwidth}{0.4pt}
+La propuesta estudia cómo los shocks regulatorios y de precios se transmiten a través de un mercado logístico estructuralmente asimétrico: un oligopolio de operadores integrados en la cúspide y un tejido atomizado de MiPyMEs de última milla en la base. El aporte central no es solo descriptivo sino cuantitativo: modelar ese sistema jerárquico —juego dinámico estocástico en el nivel oligopólico, acoplamiento Stackelberg, interacción de campo medio en el nivel atomizado— de modo que las condiciones enfrentadas por los operadores pequeños emerjan como variable endógena y no como dato exógeno.
 
-\noindent
-{\small\itshape\color{softgrey}
-Referencias clave consultadas: Aurell, Carmona, Dayanıklı \& Laurière
-(SIAM 2022); Carmona \& Wang (2017); Porter (Bell J. Econ. 1983);
-Ellison (RAND J. Econ. 1994); Bronfman, Paredes-Belmar, Marianov \&
-Eiselt (Springer ISOR/MS 2023).}
+El resultado esperado no es únicamente un artículo académico, sino una herramienta de simulación de escenarios contrafactuales calibrada con datos chilenos, utilizable por reguladores para anticipar efectos distributivos de política pública logística antes de implementarla.
+
+# Referencias {.unnumbered}
