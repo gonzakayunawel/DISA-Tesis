@@ -162,7 +162,7 @@ potencialmente disponibles:
 
 # Relación de la propuesta de investigación con el CTL / CATLEC
 
-El centro CATLEC explicita como una de sus líneas de investigación su orientación a Competitividad Logística
+El centro CATLEC explicita como una de sus líneas de investigación su orientación a la Competitividad Logística
 Nacional [@CATLEC2026] con foco en políticas públicas basadas en evidencia. Esta
 propuesta calza con esa agenda en tres dimensiones concretas: (i) el
 objeto de estudio es directamente el sistema logístico urbano chileno y
