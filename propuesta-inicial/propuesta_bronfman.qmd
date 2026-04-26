@@ -1,0 +1,200 @@
+---
+title: "Logística urbana asimétrica chilena bajo shocks regulatorios"
+subtitle: "Un enfoque cuantitativo para política pública basada en evidencia"
+author:
+  - name: "Gonza [Apellido]"
+    affiliations:
+      - name: "Doctorado en Ingeniería de Sistemas Avanzados (DISA), Universidad Andrés Bello"
+        department: "Mentor inicial: Dr. Hernán Astudillo"
+date: today
+date-format: "MMMM YYYY"
+lang: es
+abstract: |
+  Propuesta exploratoria de tesis doctoral. Documento preparado para reunión
+  con el Dr. Andrés Bronfman, Director Académico del Centro de Transporte y
+  Logística (CTL-UNAB).
+format:
+  pdf:
+    documentclass: scrartcl
+    papersize: letter
+    geometry:
+      - top=2.2cm
+      - bottom=2.2cm
+      - left=2.4cm
+      - right=2.4cm
+    fontsize: 11pt
+    linestretch: 1.15
+    colorlinks: true
+    linkcolor: "RoyalBlue"
+    urlcolor: "RoyalBlue"
+    citecolor: "RoyalBlue"
+    number-sections: true
+    toc: false
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{tcolorbox}
+        \tcbuselibrary{skins, breakable}
+        \definecolor{accent}{HTML}{1F4E79}
+        \definecolor{boxfill}{HTML}{EAF1F8}
+        \definecolor{softgrey}{HTML}{595959}
+        \usepackage{sectsty}
+        \sectionfont{\color{accent}}
+        \subsectionfont{\color{accent}}
+        \usepackage{microtype}
+        \frenchspacing
+    pdf-engine: xelatex
+    mainfont: "Latin Modern Roman"
+    sansfont: "Latin Modern Sans"
+    mathfont: "Latin Modern Math"
+---
+
+# El problema
+
+El mercado logístico chileno de e-commerce presenta una asimetría
+estructural particularmente marcada: un puñado de operadores integrados
+(Blue Express, Chilexpress, Starken, Correos Chile) concentra la mayor
+parte del volumen consolidado, mientras un tejido atomizado de
+operadores de última milla MiPyME absorbe la entrega final bajo
+condiciones contractuales heredadas del nivel superior. Esta estructura
+no es solo descriptiva: condiciona cuantitativamente cómo el sistema
+responde a shocks exógenos —variaciones del precio del diésel, tipo de
+cambio, regulaciones de bajas emisiones, normativa laboral de
+repartidores— de formas que los modelos clásicos de optimización de
+cadena de suministro no capturan.
+
+La pregunta de investigación es directa: ***¿cómo se transmiten los
+shocks regulatorios y de precios desde el nivel oligopólico hacia el
+last-mile, y qué implicancias tiene esa transmisión para el diseño de
+política pública en logística urbana?*** Responderla cuantitativamente
+requiere un modelo donde el entorno enfrentado por los operadores
+pequeños (tarifas de subcontratación, cobertura geográfica disponible)
+no sea un dato exógeno, sino una variable endógena que reacciona a las
+decisiones estratégicas del nivel superior y a los shocks externos.
+
+# Gap en la literatura
+
+Los modelos clásicos de Vehicle Routing Problem (VRP) e Inventory
+Routing Problem (IRP) optimizan la respuesta de un agente —o de un
+decisor centralizado— frente a un entorno dado. Esa formulación es
+poderosa pero asume implícitamente simetría de poder y exogeneidad del
+entorno tarifario, dos supuestos que no se sostienen en el caso chileno.
+
+Una auditoría bibliométrica preliminar en Scopus (PRISMA, en curso)
+sugiere un gap específico: la intersección entre **(i) modelamiento del
+comportamiento estratégico del oligopolio logístico**, **(ii) interacción
+de campo medio entre operadores de última milla atomizados**, y **(iii)
+evaluación contrafactual de escenarios de política pública en tiempo
+razonable**, aplicada al contexto de mercados logísticos asimétricos en
+economías emergentes, no ha sido cubierta de manera sistemática. Es
+justamente en esa intersección donde la presente propuesta busca
+posicionarse.
+
+# Propuesta metodológica
+
+Se propone modelar el sistema como una estructura jerárquica de tres
+niveles, con shocks exógenos entrando paramétricamente en cada nivel:
+
+- **Nivel oligopólico:** juego dinámico estocástico sobre tarifas
+  zonales, capacidad de red y compromiso de niveles de servicio, con dos
+  regímenes de equilibrio (colusión tácita / Nash competitivo) cuya
+  transición depende de los shocks exógenos. Forma reducida defendible
+  en la tradición de Porter (1983) y Ellison (1994).
+- **Acoplamiento Stackelberg:** los operadores principales actúan como
+  líderes anticipando la respuesta agregada del continuo de last-milers.
+- **Nivel atomizado:** los last-milers MiPyMEs resuelven un problema
+  de control óptimo de ruteo y aceptación de pedidos en interacción de
+  campo medio, donde la distribución $m(x,t)$ representa la densidad
+  espacial de capacidad de delivery.
+
+Formalmente, los tres niveles se acoplan en el siguiente sistema
+(presentado en forma compacta a modo de mapa, no de compromiso técnico
+definitivo):
+
+\begin{tcolorbox}[
+  enhanced, breakable,
+  colback=boxfill, colframe=accent,
+  boxrule=0.6pt, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+]
+\textbf{\color{accent}Nivel oligopólico con switching de régimen:}
+\begin{equation*}
+V_i^{(s)}(\xi) \;=\; \max_{a_i}\!\left\{ \pi_i^{(s)}(a_i, a_{-i}^{*}, \xi) \;+\; \delta \sum_{s'} p_{ss'}(\xi)\, \mathbb{E}\!\left[V_i^{(s')}(\xi')\right] \right\}
+\end{equation*}
+
+\textbf{\color{accent}Nivel last-mile (HJB--Fokker-Planck acoplado, paramétrico en $\xi$):}
+\begin{align*}
+-\partial_t u + H\!\left(x, \nabla u, m, a_{\text{líder}}, \xi\right) &= 0 \\[2pt]
+\partial_t m - \mathrm{div}\!\left(m\, \nabla_p H\right) - \tfrac{\sigma^2}{2}\,\Delta m &= 0
+\end{align*}
+
+\noindent
+{\small\itshape\color{softgrey}
+donde $s \in \{\text{colusivo}, \text{competitivo}\}$, $p_{ss'}(\xi)$ es
+la matriz de transición Markov dependiente de los shocks exógenos $\xi$
+(combustible, tipo de cambio, intensidad regulatoria), y $m(x,t)$ es la
+densidad espacial de capacidad de delivery disponible.}
+\end{tcolorbox}
+
+La aproximación numérica del sistema acoplado está prevista vía técnicas
+de scientific machine learning (operadores neuronales informados por
+física), las cuales permiten evaluar familias paramétricas de soluciones
+—es decir, escenarios contrafactuales de política— en tiempos
+compatibles con su uso por tomadores de decisión. Esa pieza
+computacional puede explorarse en colaboración con el claustro DISA en
+la línea de HPC.
+
+# Predicciones empíricas falsables
+
+El framework genera tres predicciones falsables con datos chilenos
+potencialmente disponibles:
+
+- **Asimetría tarifaria tipo "rockets and feathers"** frente a shocks
+  del precio del diésel: ajuste rápido al alza, lento a la baja,
+  condicional al régimen estimado.
+- **Probabilidad de régimen colusivo creciente** en la volatilidad
+  cambiaria y decreciente en la intensidad regulatoria observable
+  (proxies vía DT, SERNAC, normativa de bajas emisiones).
+- **Zonas de cobertura sub-atendidas predecibles** por el equilibrio de
+  campo medio, incluso en presencia de demanda económicamente viable
+  —fenómeno consistente con observaciones cualitativas de exclusión
+  logística en comunas periféricas.
+
+# Por qué esta investigación encaja con CTL / CATLEC
+
+La línea CATLEC explicita su orientación a competitividad logística
+nacional con foco en políticas públicas basadas en evidencia. Esta
+propuesta calza con esa agenda en tres dimensiones concretas: (i) el
+objeto de estudio es directamente el sistema logístico urbano chileno y
+su respuesta a regulación; (ii) el output principal es una herramienta
+de simulación de escenarios contrafactuales utilizable por reguladores
+—no solo un paper—; (iii) las predicciones falsables permiten contrastar
+empíricamente hipótesis sobre comportamiento de mercado que hoy se
+discuten cualitativamente.
+
+El doctorando aporta capacidades específicas en aceleración GPU
+(PyTorch/CUDA), modelamiento matemático y metaheurísticas híbridas
+(publicación en preparación a partir de la tesis de magíster), que
+complementan la experticia aplicada del CTL en operations research
+logístico.
+
+## Lo que se solicita en esta etapa {.unnumbered}
+
+**Una reunión exploratoria de aproximadamente 30 minutos**, sin
+compromiso de dirección a esta altura. El objetivo es presentar la
+motivación del problema, escuchar su lectura sobre la pertinencia y el
+encuadre, y evaluar conjuntamente si vale la pena seguir conversando.
+Este documento es una versión inicial; espero que su feedback —en
+particular sobre el realismo del problema y la disponibilidad de datos
+chilenos relevantes— ayude a calibrar la dirección que tome la propuesta
+en los próximos meses.
+
+\vspace{0.5em}
+\noindent\rule{\textwidth}{0.4pt}
+
+\noindent
+{\small\itshape\color{softgrey}
+Referencias clave consultadas: Aurell, Carmona, Dayanıklı \& Laurière
+(SIAM 2022); Carmona \& Wang (2017); Porter (Bell J. Econ. 1983);
+Ellison (RAND J. Econ. 1994); Bronfman, Paredes-Belmar, Marianov \&
+Eiselt (Springer ISOR/MS 2023).}
